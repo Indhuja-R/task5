@@ -3,33 +3,25 @@ pipeline {
   stages {
     stage('Clean') {
       steps {
-        sh './gradlew clean --no-daemon'
+       git ''
       }
     }
 
     stage('Build') {
       steps {
-        sh './gradlew build --no-daemon'
+        sh 'mvn -B -DskipTests clean package'
       }
     }
 
-    stage('Upload Artifacts') {
-      steps {
-        archiveArtifacts 'build/libs/**.jar'
-      }
-    }
+    
 
-    stage('Publish') {
-      when { 
-        branch 'main'
+    stage('test') {
+      steps { 
+        sh 'mvn test'
       }
-      steps {
-        sh './gradlew publish --no-daemon'
-      }
-    }
+      
 
   }
-  environment {
-    local_maven = '/var/www/maven'
-  }
+  
+}
 }
