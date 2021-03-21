@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('commit') {
             steps {
+                tool name: 'Default', type: 'git'
                 git 'https://github.com/Indhuja-R/task5.git'
                 sh 'mvn -B -DskipTests clean package'
             }
