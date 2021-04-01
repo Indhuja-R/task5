@@ -725,7 +725,7 @@
                         {
                             "Fn::GetAtt" : [
                                 "ECSALB",
-                                "ec2-15-206-167-25.ap-south-1.compute.amazonaws.com"
+                                "task-1728534856.ap-south-1.elb.amazonaws.com"
                             ]
                         }
                     ]
